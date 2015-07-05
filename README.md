@@ -1,0 +1,2 @@
+# Keyboard-of-FUN
+"FUNFUNFUNFUNFUNFUN" ~cyber 1969
