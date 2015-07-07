@@ -81,7 +81,7 @@ public class GUI extends JFrame {
 		lblOpensNewWindow.setBounds(160, 12, 342, 40);
 		MenuPanel.add(lblOpensNewWindow);
 		
-		JButton btnNewButton = new JButton("Open new profile");
+		JButton btnNewButton = new JButton("Load profile");
 		
 		btnNewButton.setBounds(10, 76, 140, 23);
 		MenuPanel.add(btnNewButton);
