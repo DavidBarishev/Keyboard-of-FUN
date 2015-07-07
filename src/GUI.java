@@ -1,23 +1,40 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
+
 import java.awt.CardLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JEditorPane;
 
 
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -45,51 +62,191 @@ public class GUI extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new CardLayout(0, 0));
-		final CardLayout cl = (CardLayout) contentPane.getLayout();
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		final JPanel panel = new JPanel();
-		contentPane.add(panel, "Menu");
-		panel.setLayout(null);
+		final JPanel Cards = new JPanel();
+		contentPane.add(Cards);
+		Cards.setLayout(new CardLayout(0, 0));
+		
+		final JPanel MenuPanel = new JPanel();
+		Cards.add(MenuPanel, "name_39285949539102");
+		MenuPanel.setLayout(null);
 		
 		JButton btnMakeNewProfile = new JButton("Make new profile");
-		btnMakeNewProfile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cl.show(panel, "Menu");
-			}
-		});
+		
 		btnMakeNewProfile.setBounds(10, 11, 140, 23);
-		panel.add(btnMakeNewProfile);
+		MenuPanel.add(btnMakeNewProfile);
 		
 		JLabel lblOpensNewWindow = new JLabel("<html>Opens new window , which the user types the long ass message and we get the file of his profile</html>");
 		lblOpensNewWindow.setBounds(160, 12, 342, 40);
-		panel.add(lblOpensNewWindow);
+		MenuPanel.add(lblOpensNewWindow);
 		
 		JButton btnNewButton = new JButton("Open new profile");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		btnNewButton.setBounds(10, 76, 140, 23);
-		panel.add(btnNewButton);
+		MenuPanel.add(btnNewButton);
 		
 		JLabel lblOpensANew = new JLabel("<html> Opens a new profile with profile syntex for debugging</html>");
 		lblOpensANew.setBounds(160, 72, 342, 31);
-		panel.add(lblOpensANew);
+		MenuPanel.add(lblOpensANew);
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, "Add profile");
-		panel_1.setLayout(null);
+		JButton btnNewButton_1 = new JButton("Matching profiles");
+		
+		btnNewButton_1.setBounds(10, 131, 140, 23);
+		MenuPanel.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("<html>This will macth between short message to a profile and will show the statistics made </html>");
+		lblNewLabel_1.setBounds(160, 135, 347, 40);
+		MenuPanel.add(lblNewLabel_1);
+		
+		final JPanel NewProfile = new JPanel();
+		Cards.add(NewProfile, "name_39289054579067");
+		NewProfile.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 201, 86, 20);
-		panel_1.add(textField);
+		textField.setBounds(10, 201, 574, 20);
+		NewProfile.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("<html>This is the text that needs to be displayed</html>");
-		lblNewLabel.setBackground(new Color(255, 175, 175));
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 584, 124);
-		panel_1.add(lblNewLabel);
+		lblNewLabel.setBounds(10, 11, 574, 124);
+		NewProfile.add(lblNewLabel);
+		
+		JLabel lblUserInputLine = new JLabel("User input line");
+		lblUserInputLine.setBounds(10, 176, 89, 14);
+		NewProfile.add(lblUserInputLine);
+		
+		JButton btnSaveProfile = new JButton("Save profile");
+		btnSaveProfile.setBounds(142, 298, 125, 23);
+		NewProfile.add(btnSaveProfile);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(276, 298, 86, 23);
+		NewProfile.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblUserName = new JLabel("User Name");
+		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUserName.setBounds(276, 273, 86, 14);
+		NewProfile.add(lblUserName);
+		
+		JButton btnBacl = new JButton("Back");
+		btnBacl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cards.removeAll();
+				Cards.add(MenuPanel);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		btnBacl.setBounds(10, 327, 89, 23);
+		NewProfile.add(btnBacl);
+		
+		final JPanel profileStatistics = new JPanel();
+		Cards.add(profileStatistics, "name_8864153784600");
+		profileStatistics.setLayout(null);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cards.removeAll();
+				Cards.add(MenuPanel);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		btnBack.setBounds(10, 327, 89, 23);
+		profileStatistics.add(btnBack);
+		
+		final JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(10, 11, 584, 305);
+		profileStatistics.add(editorPane);
+		
+		
+		final JFileChooser openProfile = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+		openProfile.setFileFilter(filter);
+		JButton btnLoadUpProfile = new JButton("Load up profile");
+		btnLoadUpProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(openProfile.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+					try {
+						FileReader reader = new FileReader(openProfile.getSelectedFile());
+						editorPane.read(reader, openProfile.getSelectedFile().getName());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+						System.out.println("bad file");
+					}
+				}
+			}
+		});
+		btnLoadUpProfile.setBounds(466, 327, 128, 23);
+		profileStatistics.add(btnLoadUpProfile);
+		
+		JButton btnSaveToThis = new JButton("Save to this file ");
+		btnSaveToThis.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 try {
+					BufferedWriter out = new BufferedWriter(new FileWriter(openProfile.getSelectedFile())); 
+					out.write(editorPane.getText());
+					out.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+					if(openProfile.getSelectedFile() == null){
+						System.out.println("File isnt selected , please load a file.");
+					}
+				}
+				 
+			}
+		});
+		btnSaveToThis.setBounds(333, 327, 123, 23);
+		profileStatistics.add(btnSaveToThis);
+		
+		final JPanel matchProfiles = new JPanel();
+		Cards.add(matchProfiles, "name_8901595646374");
+		matchProfiles.setLayout(null);
+		
+		JButton btnBack_1 = new JButton("Back");
+		btnBack_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cards.removeAll();
+				Cards.add(MenuPanel);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		btnBack_1.setBounds(10, 327, 89, 23);
+		matchProfiles.add(btnBack_1);
+		
+		btnMakeNewProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cards.removeAll();
+				Cards.add(NewProfile);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cards.removeAll();
+				Cards.add(profileStatistics);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cards.removeAll();
+				Cards.add(matchProfiles);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		
 	}
 }
