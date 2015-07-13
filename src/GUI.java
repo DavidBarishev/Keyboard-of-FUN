@@ -116,19 +116,33 @@ public class GUI extends JFrame {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				start_time = System.currentTimeMillis();
+				if((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)){
+					start_time = System.currentTimeMillis();
+				}
 			}
 			@Override
 			public void keyReleased(KeyEvent e) {
-				end_time = System.currentTimeMillis();
-				timePressed = (int) (end_time - start_time);
-				System.out.println(timePressed);
-				a.add(charPressed,timePressed);
+				if((int)e.getKeyChar() > 64 && (int)e.getKeyChar() < 91){
+					end_time = System.currentTimeMillis();
+					timePressed = (int) (end_time - start_time);
+					System.out.println(timePressed);
+					a.add((char)(charPressed+32),timePressed);
+					
+				}
+				else if(e.getKeyChar() > 96 && e.getKeyChar() < 123){
+					end_time = System.currentTimeMillis();
+					timePressed = (int) (end_time - start_time);
+					System.out.println(timePressed);
+					a.add(charPressed,timePressed);
+				}
+				
 			}
 			@Override
 			public void keyTyped(KeyEvent e) {
-				charPressed = e.getKeyChar();
-				System.out.println("key character = '" + e.getKeyChar() + "'");
+				if((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)){
+					charPressed = e.getKeyChar();
+					System.out.println("key character = '" + e.getKeyChar() + "'");
+				}
 			}
 		});
 		textField.setBounds(10, 201, 574, 20);
