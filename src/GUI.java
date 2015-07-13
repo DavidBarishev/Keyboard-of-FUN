@@ -19,15 +19,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JEditorPane;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class GUI extends JFrame {
@@ -74,7 +77,7 @@ public class GUI extends JFrame {
 		
 		JButton btnMakeNewProfile = new JButton("Make new profile");
 		
-		btnMakeNewProfile.setBounds(10, 11, 140, 23);
+		btnMakeNewProfile.setBounds(10, 14, 140, 23);
 		MenuPanel.add(btnMakeNewProfile);
 		
 		JLabel lblOpensNewWindow = new JLabel("<html>Opens new window , which the user types the long ass message and we get the file of his profile</html>");
@@ -103,7 +106,31 @@ public class GUI extends JFrame {
 		Cards.add(NewProfile, "name_39289054579067");
 		NewProfile.setLayout(null);
 		
+		final creator a = new creator();
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			long start_time;
+			long end_time;
+			int timePressed;
+			char charPressed;
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				start_time = System.currentTimeMillis();
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				end_time = System.currentTimeMillis();
+				timePressed = (int) (end_time - start_time);
+				System.out.println(timePressed);
+				a.add(charPressed,timePressed);
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+				charPressed = e.getKeyChar();
+				System.out.println("key character = '" + e.getKeyChar() + "'");
+			}
+		});
 		textField.setBounds(10, 201, 574, 20);
 		NewProfile.add(textField);
 		textField.setColumns(10);
@@ -120,6 +147,7 @@ public class GUI extends JFrame {
 		NewProfile.add(lblUserInputLine);
 		
 		JButton btnSaveProfile = new JButton("Save profile");
+		
 		btnSaveProfile.setBounds(142, 298, 125, 23);
 		NewProfile.add(btnSaveProfile);
 		
@@ -132,6 +160,12 @@ public class GUI extends JFrame {
 		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUserName.setBounds(276, 273, 86, 14);
 		NewProfile.add(lblUserName);
+		
+		btnSaveProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				a.finish(textField_1.getText());
+			}
+		});
 		
 		JButton btnBacl = new JButton("Back");
 		btnBacl.addActionListener(new ActionListener() {
