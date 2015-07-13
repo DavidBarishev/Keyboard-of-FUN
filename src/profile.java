@@ -14,11 +14,16 @@ public class profile {
 		letters = l;
 	}
 	public profile(File file){
+		letters = new letter[24];
+		for(int i = 0 ; i < letters.length ; i++){
+			letters[i] = new letter();
+		}
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			name = br.readLine();
-			for(int i = 0 ; i < 25 ; i++){
+			for(int i = 0 ; i < 23 ; ++i){
+				//System.out.println(br.readLine());
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
 			br.close();
@@ -41,9 +46,9 @@ public class profile {
 		out.close();
 	}
 	public String toString(){
-		String ans=name+"/n";
+		String ans=name+"\n";
 		for(int i=0;i<letters.length;i++){
-			ans+=(char)(i+(int)'A')+":"+letters[i].avgPressTime+"ms /n";
+			ans+=(char)(i+(int)'A')+" : "+letters[i].avgPressTime+"ms \n";
 		}
 		return ans;
 	}
