@@ -1,14 +1,16 @@
+import java.io.IOException;
+
 //Creating a profile according to what the GUI sends and return s the data with a name at the end
 public class creator {
 	private letter[] letters;
-	private int timesPressed;
+	//private int timesPressed;
 	//private int avgIdleTime;
-	private int lastRelease;
+	//private int lastRelease;
 
 	creator() {
 		//avgIdleTime = 0;
-		timesPressed = 0;
-		lastRelease = 0;
+		//timesPressed = 0;
+		//lastRelease = 0;
 		for (int i = (int) 'a'; i <= (int) 'z'; i++) {
 			letters[i - 'a'] = new letter((char) i);
 		}
@@ -21,10 +23,16 @@ public class creator {
 					/ (timesPressed + 1);
 		}
 		lastRelease = release;*/
-		timesPressed++;
+		//timesPressed++;
 	}
 
-	public profile finish(String name) {
-		return new profile(name, letters);
+	public void finish(String name)  {
+		profile profile = new profile(name, letters);
+		try {
+			profile.output();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
