@@ -2,11 +2,11 @@
 public class creator {
 	private letter[] letters;
 	private int timesPressed;
-	private int avgIdleTime;
+	//private int avgIdleTime;
 	private int lastRelease;
 
 	creator() {
-		avgIdleTime = 0;
+		//avgIdleTime = 0;
 		timesPressed = 0;
 		lastRelease = 0;
 		for (int i = (int) 'a'; i <= (int) 'z'; i++) {
@@ -14,17 +14,17 @@ public class creator {
 		}
 	}
 
-	public void add(char c, int press, int release) {
-		letters[(int) c].add(release - press);
-		if (lastRelease != 0) {
-			avgIdleTime = (avgIdleTime * timesPressed + release - press)
+	public void add(char c, int pressTime) {
+		letters[(int) c].add(pressTime);
+		/*if (lastRelease != 0) {
+			avgIdleTime = (avgIdleTime * timesPressed + pressTime)
 					/ (timesPressed + 1);
 		}
-		lastRelease = release;
+		lastRelease = release;*/
 		timesPressed++;
 	}
 
 	public profile finish(String name) {
-		return new profile(name, letters, avgIdleTime);
+		return new profile(name, letters);
 	}
 }
