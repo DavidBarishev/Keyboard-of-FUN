@@ -40,4 +40,11 @@ public class profile {
 		}
 		out.close();
 	}
+	public String toString(){
+		String ans=name+"/n";
+		for(int i=0;i<letters.length;i++){
+			ans+=(char)(i+(int)'A')+":"+letters[i].avgPressTime+"ms /n";
+		}
+		return ans;
+	}
 }
