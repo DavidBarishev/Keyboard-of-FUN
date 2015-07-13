@@ -2,14 +2,13 @@
 //or NOT.
 public class Profiler{
 	
-	profile user;
-	profile[] compareTo;
-	
-	public boolean comapare(){
+	public static profile compare(profile[] compareTo, profile user){
 		
+		for(int i = 0; i < compareTo.length; i++){
+			
+		}
 		
-		
-		return false;
+		return user;
 	}
 
 }
