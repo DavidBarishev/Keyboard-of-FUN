@@ -14,7 +14,7 @@ public class creator {
 		// lastRelease = 0;
 		letters = new letter[24];
 		for (int i = 0; i <letters.length; i++) {
-			letters[i] = new letter((char)(i+(int)'a'));
+			letters[i] = new letter();
 		}
 	}
 

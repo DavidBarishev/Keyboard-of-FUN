@@ -16,7 +16,7 @@ public class profile {
 		
 	}
 	public void output() throws IOException{
-		File profile = new File(name+".txt");
+		File profile = new File(System.getProperty("user.dir")+"\\Profiles\\"+name+".txt");
 		FileWriter writer = new FileWriter(profile);
 		BufferedWriter out = new BufferedWriter(writer);
 		out.append(name);
