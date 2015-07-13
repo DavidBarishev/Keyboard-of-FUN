@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +15,17 @@ public class profile {
 		letters = l;
 	}
 	public profile(File file){
+		try {
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			name = br.readLine();
+			for(int i = 0 ; i < 25 ; i++){
+				letters[i] = new letter(Integer.parseInt(br.readLine()));
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	public void output() throws IOException{
