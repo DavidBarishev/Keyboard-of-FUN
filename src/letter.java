@@ -1,8 +1,8 @@
 
 public class letter {
-	char letter;
-	int avgPressTime;
-	int timesPressed;
+	public char letter;
+	public int avgPressTime;
+	public int timesPressed;
 	letter(char l){
 		letter = l;
 		avgPressTime=0;
