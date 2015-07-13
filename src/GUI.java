@@ -31,6 +31,9 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 
 public class GUI extends JFrame {
@@ -215,19 +218,16 @@ public class GUI extends JFrame {
 		
 		
 		final JFileChooser openProfile = new JFileChooser();
+		openProfile.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
 		openProfile.setFileFilter(filter);
 		JButton btnLoadUpProfile = new JButton("Load up profile");
 		btnLoadUpProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(openProfile.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-					try {
-						FileReader reader = new FileReader(openProfile.getSelectedFile());
-						editorPane.read(reader, openProfile.getSelectedFile().getName());
-					} catch (IOException e1) {
-						e1.printStackTrace();
-						System.out.println("bad file");
-					}
+					profile a = new profile(openProfile.getSelectedFile());
+					String aToString = a.toString();
+					editorPane.setText(aToString);
 				}
 			}
 		});
@@ -252,6 +252,12 @@ public class GUI extends JFrame {
 		});
 		btnSaveToThis.setBounds(333, 327, 123, 23);
 		profileStatistics.add(btnSaveToThis);
+		
+		JScrollPane scrollPane = new JScrollPane(editorPane);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		//scrollPane.setViewportView(editorPane);
+		scrollPane.setBounds(10, 0, 584, 316);
+		profileStatistics.add(scrollPane);
 		
 		final JPanel matchProfiles = new JPanel();
 		Cards.add(matchProfiles, "name_8901595646374");
