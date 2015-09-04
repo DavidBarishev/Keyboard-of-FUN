@@ -14,21 +14,28 @@ public class profile {
 		letters = l;
 	}
 	public profile(File file){
+		//initializing the array
 		letters = new letter[24];
 		for(int i = 0 ; i < letters.length ; i++){
 			letters[i] = new letter();
 		}
+		
 		try {
+			//Declare readers
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
+			
+			//read name
 			name = br.readLine();
+			
+			//Go through the page and pick up the numbers
 			for(int i = 0 ; i < 23 ; ++i){
-				//System.out.println(br.readLine());
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
+			
+			//Close buffers
 			br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
