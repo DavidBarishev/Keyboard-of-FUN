@@ -9,21 +9,23 @@ import java.io.IOException;
 public class profile {
 	public String name;
 	public letter[] letters;
+
 	public profile(String n, letter[] l) {
 		name = n;
 		letters = l;
 	}
-	public profile(File file){
+
+	public profile(File file) {
 		letters = new letter[24];
-		for(int i = 0 ; i < letters.length ; i++){
+		for (int i = 0; i < letters.length; i++) {
 			letters[i] = new letter();
 		}
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			name = br.readLine();
-			for(int i = 0 ; i < 23 ; ++i){
-				//System.out.println(br.readLine());
+			for (int i = 0; i < 23; ++i) {
+				// System.out.println(br.readLine());
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
 			br.close();
@@ -31,24 +33,26 @@ public class profile {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	public void output() throws IOException{
-		File profile = new File(System.getProperty("user.dir")+"\\Profiles\\"+name+".txt");
+
+	public void output() throws IOException {
+		File profile = new File(System.getProperty("user.dir") + "\\Profiles\\" + name + ".txt");
 		FileWriter writer = new FileWriter(profile);
 		BufferedWriter out = new BufferedWriter(writer);
 		out.append(name);
 		out.newLine();
-		for(int i =0;i<letters.length;i++){
+		for (int i = 0; i < letters.length; i++) {
 			out.append(Integer.toString(letters[i].avgPressTime));
 			out.newLine();
 		}
 		out.close();
 	}
-	public String toString(){
-		String ans=name+"\n";
-		for(int i=0;i<letters.length;i++){
-			ans+=(char)(i+(int)'A')+" : "+letters[i].avgPressTime+"ms \n";
+
+	public String toString() {
+		String ans = name + "\n";
+		for (int i = 0; i < letters.length; i++) {
+			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime + "ms \n";
 		}
 		return ans;
 	}

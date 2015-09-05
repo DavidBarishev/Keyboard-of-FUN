@@ -7,10 +7,12 @@ public class letter {
 		avgPressTime = 0;
 		timesPressed = 0;
 	}
-	letter(int i){
-		avgPressTime=i;
-		timesPressed=1;
+
+	letter(int i) {
+		avgPressTime = i;
+		timesPressed = 1;
 	}
+
 	public void add(int t) {
 		avgPressTime = (avgPressTime * timesPressed + t) / (timesPressed + 1);
 		timesPressed++;

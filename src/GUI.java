@@ -35,7 +35,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
@@ -69,46 +68,48 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		final JPanel Cards = new JPanel();
 		contentPane.add(Cards);
 		Cards.setLayout(new CardLayout(0, 0));
-		
+
 		final JPanel MenuPanel = new JPanel();
 		Cards.add(MenuPanel, "name_39285949539102");
 		MenuPanel.setLayout(null);
-		
+
 		JButton btnMakeNewProfile = new JButton("Make new profile");
-		
+
 		btnMakeNewProfile.setBounds(10, 14, 140, 23);
 		MenuPanel.add(btnMakeNewProfile);
-		
-		JLabel lblOpensNewWindow = new JLabel("<html>Opens new window , which the user types the long ass message and we get the file of his profile</html>");
+
+		JLabel lblOpensNewWindow = new JLabel(
+				"<html>Opens new window , which the user types the long ass message and we get the file of his profile</html>");
 		lblOpensNewWindow.setBounds(160, 12, 342, 40);
 		MenuPanel.add(lblOpensNewWindow);
-		
+
 		JButton btnNewButton = new JButton("Load profile");
-		
+
 		btnNewButton.setBounds(10, 76, 140, 23);
 		MenuPanel.add(btnNewButton);
-		
+
 		JLabel lblOpensANew = new JLabel("<html> Opens a new profile with profile syntex for debugging</html>");
 		lblOpensANew.setBounds(160, 72, 342, 31);
 		MenuPanel.add(lblOpensANew);
-		
+
 		JButton btnNewButton_1 = new JButton("Matching profiles");
-		
+
 		btnNewButton_1.setBounds(10, 131, 140, 23);
 		MenuPanel.add(btnNewButton_1);
-		
-		JLabel lblNewLabel_1 = new JLabel("<html>This will macth between short message to a profile and will show the statistics made </html>");
+
+		JLabel lblNewLabel_1 = new JLabel(
+				"<html>This will macth between short message to a profile and will show the statistics made </html>");
 		lblNewLabel_1.setBounds(160, 135, 347, 40);
 		MenuPanel.add(lblNewLabel_1);
-		
+
 		final JPanel NewProfile = new JPanel();
 		Cards.add(NewProfile, "name_39289054579067");
 		NewProfile.setLayout(null);
-		
+
 		final creator a = new creator();
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() {
@@ -116,33 +117,34 @@ public class GUI extends JFrame {
 			long end_time;
 			int timePressed;
 			char charPressed;
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)){
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
 					start_time = System.currentTimeMillis();
 				}
 			}
+
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if((int)e.getKeyChar() > 64 && (int)e.getKeyChar() < 91){
+				if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
 					end_time = System.currentTimeMillis();
 					timePressed = (int) (end_time - start_time);
 					System.out.println(timePressed);
-					a.add((char)(charPressed+32),timePressed);
-					
-				}
-				else if(e.getKeyChar() > 96 && e.getKeyChar() < 123){
+					a.add((char) (charPressed + 32), timePressed);
+
+				} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
 					end_time = System.currentTimeMillis();
 					timePressed = (int) (end_time - start_time);
 					System.out.println(timePressed);
-					a.add(charPressed,timePressed);
+					a.add(charPressed, timePressed);
 				}
-				
+
 			}
+
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)){
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
 					charPressed = e.getKeyChar();
 					System.out.println("key character = '" + e.getKeyChar() + "'");
 				}
@@ -151,39 +153,39 @@ public class GUI extends JFrame {
 		textField.setBounds(10, 201, 574, 20);
 		NewProfile.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblNewLabel = new JLabel("<html>This is the text that needs to be displayed</html>");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 574, 124);
 		NewProfile.add(lblNewLabel);
-		
+
 		JLabel lblUserInputLine = new JLabel("User input line");
 		lblUserInputLine.setBounds(10, 176, 89, 14);
 		NewProfile.add(lblUserInputLine);
-		
+
 		JButton btnSaveProfile = new JButton("Save profile");
-		
+
 		btnSaveProfile.setBounds(142, 298, 125, 23);
 		NewProfile.add(btnSaveProfile);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(276, 298, 86, 23);
 		NewProfile.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JLabel lblUserName = new JLabel("User Name");
 		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUserName.setBounds(276, 273, 86, 14);
 		NewProfile.add(lblUserName);
-		
+
 		btnSaveProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				a.finish(textField_1.getText());
 			}
 		});
-		
+
 		JButton btnBacl = new JButton("Back");
 		btnBacl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -195,11 +197,11 @@ public class GUI extends JFrame {
 		});
 		btnBacl.setBounds(10, 327, 89, 23);
 		NewProfile.add(btnBacl);
-		
+
 		final JPanel profileStatistics = new JPanel();
 		Cards.add(profileStatistics, "name_8864153784600");
 		profileStatistics.setLayout(null);
-		
+
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -211,12 +213,11 @@ public class GUI extends JFrame {
 		});
 		btnBack.setBounds(10, 327, 89, 23);
 		profileStatistics.add(btnBack);
-		
+
 		final JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(10, 11, 584, 305);
 		profileStatistics.add(editorPane);
-		
-		
+
 		final JFileChooser openProfile = new JFileChooser();
 		openProfile.setCurrentDirectory(new File(System.getProperty("user.dir")));
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
@@ -224,7 +225,7 @@ public class GUI extends JFrame {
 		JButton btnLoadUpProfile = new JButton("Load up profile");
 		btnLoadUpProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(openProfile.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+				if (openProfile.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 					profile a = new profile(openProfile.getSelectedFile());
 					String aToString = a.toString();
 					editorPane.setText(aToString);
@@ -233,36 +234,36 @@ public class GUI extends JFrame {
 		});
 		btnLoadUpProfile.setBounds(466, 327, 128, 23);
 		profileStatistics.add(btnLoadUpProfile);
-		
+
 		JButton btnSaveToThis = new JButton("Save to this file ");
 		btnSaveToThis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 try {
-					BufferedWriter out = new BufferedWriter(new FileWriter(openProfile.getSelectedFile())); 
+				try {
+					BufferedWriter out = new BufferedWriter(new FileWriter(openProfile.getSelectedFile()));
 					out.write(editorPane.getText());
 					out.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
-					if(openProfile.getSelectedFile() == null){
+					if (openProfile.getSelectedFile() == null) {
 						System.out.println("File isnt selected , please load a file.");
 					}
 				}
-				 
+
 			}
 		});
 		btnSaveToThis.setBounds(333, 327, 123, 23);
 		profileStatistics.add(btnSaveToThis);
-		
+
 		JScrollPane scrollPane = new JScrollPane(editorPane);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		//scrollPane.setViewportView(editorPane);
+		// scrollPane.setViewportView(editorPane);
 		scrollPane.setBounds(10, 0, 584, 316);
 		profileStatistics.add(scrollPane);
-		
+
 		final JPanel matchProfiles = new JPanel();
 		Cards.add(matchProfiles, "name_8901595646374");
 		matchProfiles.setLayout(null);
-		
+
 		JButton btnBack_1 = new JButton("Back");
 		btnBack_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -274,7 +275,7 @@ public class GUI extends JFrame {
 		});
 		btnBack_1.setBounds(10, 327, 89, 23);
 		matchProfiles.add(btnBack_1);
-		
+
 		btnMakeNewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cards.removeAll();
@@ -283,7 +284,7 @@ public class GUI extends JFrame {
 				Cards.revalidate();
 			}
 		});
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cards.removeAll();
@@ -292,7 +293,7 @@ public class GUI extends JFrame {
 				Cards.revalidate();
 			}
 		});
-		
+
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cards.removeAll();
@@ -301,6 +302,6 @@ public class GUI extends JFrame {
 				Cards.revalidate();
 			}
 		});
-		
+
 	}
 }
