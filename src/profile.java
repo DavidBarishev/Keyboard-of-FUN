@@ -14,54 +14,40 @@ public class profile {
 		name = n;
 		letters = l;
 	}
-<<<<<<< HEAD
 
 	public profile(File file) {
-=======
-	public profile(File file){
-		//initializing the array
->>>>>>> origin/master
+		// initializing the array
+
 		letters = new letter[24];
 		for (int i = 0; i < letters.length; i++) {
 			letters[i] = new letter();
 		}
-		
+
 		try {
-			//Declare readers
+			// Declare readers
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			
-			//read name
+
+			// read name
 			name = br.readLine();
-<<<<<<< HEAD
+
+			// Go through the page and pick up the numbers
 			for (int i = 0; i < 23; ++i) {
-				// System.out.println(br.readLine());
-=======
-			
-			//Go through the page and pick up the numbers
-			for(int i = 0 ; i < 23 ; ++i){
->>>>>>> origin/master
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
-			
-			//Close buffers
+
+			// Close buffers
 			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
-<<<<<<< HEAD
 
 	public void output() throws IOException {
-		File profile = new File(System.getProperty("user.dir") + "\\Profiles\\" + name + ".txt");
-=======
-	
-	
-	
-	public void output() throws IOException{
-		File profile = new File(System.getProperty("user.dir")+"\\Profiles\\"+name+".txt");
->>>>>>> origin/master
+		File profile = new File(System.getProperty("user.dir") + "\\Profiles\\"
+				+ name + ".txt");
+
 		FileWriter writer = new FileWriter(profile);
 		BufferedWriter out = new BufferedWriter(writer);
 		out.append(name);
@@ -76,7 +62,8 @@ public class profile {
 	public String toString() {
 		String ans = name + "\n";
 		for (int i = 0; i < letters.length; i++) {
-			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime + "ms \n";
+			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime
+					+ "ms \n";
 		}
 		return ans;
 	}

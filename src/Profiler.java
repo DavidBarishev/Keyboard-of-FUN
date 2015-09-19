@@ -1,7 +1,8 @@
-
 //this class checks the proximity of one profile to the list of registered profiles 
 //and returns the closest profile up to a threshold variable
 public class Profiler {
+	public float proximityPercent;
+
 	/*
 	 * public static profile compare(profile[] users, profile comparable){
 	 * 
@@ -17,7 +18,9 @@ public class Profiler {
 	 */
 	// gets a list of profiles, a profile to compare to and a threshold of
 	// proximity allowed(the smaller the better)
-	public static profile compare(profile[] users, profile comparable, int threshold) {
+	
+	public profile compare(profile[] users, profile comparable,
+			int threshold) {
 		float[] proximity = new float[users.length];
 		for (int i = 0; i < users.length; i++) {
 			proximity[i] = approximate(users[i], comparable);
@@ -26,8 +29,17 @@ public class Profiler {
 		if (bestOption == -1) {
 			return null;
 		} else {
+			proximityPercent = 100 -((proximity[bestOption]/avgProximity(comparable.letters))*100);
 			return users[bestOption];
 		}
+	}
+
+	private static float avgProximity(letter[] letters) {
+		int[] lettersTime = new int[23];
+		for(int i = 0;i<23;i++){
+			lettersTime[i]=letters[i].avgPressTime;
+		}
+		return avgProximity(lettersTime);
 	}
 
 	private static int bestOption(float[] proximity, int threshold) {
@@ -45,7 +57,8 @@ public class Profiler {
 	private static float approximate(profile user, profile comparable) {
 		int[] letterProximity = new int[24];
 		for (int i = 0; i < 23; i++) {
-			letterProximity[i] = Math.abs(user.letters[i].avgPressTime - comparable.letters[i].avgPressTime);
+			letterProximity[i] = Math.abs(user.letters[i].avgPressTime
+					- comparable.letters[i].avgPressTime);
 		}
 		return avgProximity(letterProximity);
 	}

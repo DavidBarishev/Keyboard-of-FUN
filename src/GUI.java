@@ -56,7 +56,8 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager
+							.getSystemLookAndFeelClassName());
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -65,13 +66,13 @@ public class GUI extends JFrame {
 			}
 		});
 	}
-	
+
 	/*
 	 * Field for matching
 	 */
 	private profile find;
 	private profile[] findFrom;
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -107,7 +108,8 @@ public class GUI extends JFrame {
 		btnNewButton.setBounds(10, 76, 140, 23);
 		MenuPanel.add(btnNewButton);
 
-		JLabel lblOpensANew = new JLabel("<html> Opens a new profile with profile syntex for debugging</html>");
+		JLabel lblOpensANew = new JLabel(
+				"<html> Opens a new profile with profile syntex for debugging</html>");
 		lblOpensANew.setBounds(160, 72, 342, 31);
 		MenuPanel.add(lblOpensANew);
 
@@ -120,19 +122,10 @@ public class GUI extends JFrame {
 				"<html>This will macth between short message to a profile and will show the statistics made </html>");
 		lblNewLabel_1.setBounds(160, 135, 347, 40);
 		MenuPanel.add(lblNewLabel_1);
-<<<<<<< HEAD
 
-		final JPanel NewProfile = new JPanel();
-		Cards.add(NewProfile, "name_39289054579067");
-		NewProfile.setLayout(null);
-
-=======
-		
 		final JPanel ProfileMaker = new JPanel();
 		Cards.add(ProfileMaker, "name_39289054579067");
 		ProfileMaker.setLayout(null);
-		
->>>>>>> origin/master
 		final creator a = new creator();
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() {
@@ -143,7 +136,8 @@ public class GUI extends JFrame {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
+						|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
 					start_time = System.currentTimeMillis();
 				}
 			}
@@ -167,9 +161,11 @@ public class GUI extends JFrame {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
+						|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
 					charPressed = e.getKeyChar();
-					System.out.println("key character = '" + e.getKeyChar() + "'");
+					System.out.println("key character = '" + e.getKeyChar()
+							+ "'");
 				}
 			}
 		});
@@ -177,36 +173,25 @@ public class GUI extends JFrame {
 		ProfileMaker.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("<html>This is the text that needs to be displayed</html>");
+		JLabel lblNewLabel = new JLabel(
+				"<html>This is the text that needs to be displayed</html>");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 574, 124);
-<<<<<<< HEAD
-		NewProfile.add(lblNewLabel);
 
-		JLabel lblUserInputLine = new JLabel("User input line");
-		lblUserInputLine.setBounds(10, 176, 89, 14);
-		NewProfile.add(lblUserInputLine);
-
-=======
 		ProfileMaker.add(lblNewLabel);
-		
+
 		JLabel lblUserInputLine = new JLabel("User input line");
 		lblUserInputLine.setBounds(10, 176, 89, 14);
 		ProfileMaker.add(lblUserInputLine);
-		
->>>>>>> origin/master
+
 		JButton btnSaveProfile = new JButton("Save profile");
 
 		btnSaveProfile.setBounds(142, 298, 125, 23);
-<<<<<<< HEAD
-		NewProfile.add(btnSaveProfile);
 
-=======
 		ProfileMaker.add(btnSaveProfile);
-		
->>>>>>> origin/master
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(276, 298, 86, 23);
 		ProfileMaker.add(textField_1);
@@ -215,13 +200,9 @@ public class GUI extends JFrame {
 		JLabel lblUserName = new JLabel("User Name");
 		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUserName.setBounds(276, 273, 86, 14);
-<<<<<<< HEAD
-		NewProfile.add(lblUserName);
 
-=======
 		ProfileMaker.add(lblUserName);
-		
->>>>>>> origin/master
+
 		btnSaveProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				a.finish(textField_1.getText());
@@ -238,13 +219,9 @@ public class GUI extends JFrame {
 			}
 		});
 		btnBacl.setBounds(10, 327, 89, 23);
-<<<<<<< HEAD
-		NewProfile.add(btnBacl);
 
-=======
 		ProfileMaker.add(btnBacl);
-		
->>>>>>> origin/master
+
 		final JPanel profileStatistics = new JPanel();
 		Cards.add(profileStatistics, "name_8864153784600");
 		profileStatistics.setLayout(null);
@@ -266,8 +243,10 @@ public class GUI extends JFrame {
 		profileStatistics.add(editorPane);
 
 		final JFileChooser openProfile = new JFileChooser();
-		openProfile.setCurrentDirectory(new File(System.getProperty("user.dir")));
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+		openProfile
+				.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"TEXT FILES", "txt", "text");
 		openProfile.setFileFilter(filter);
 		JButton btnLoadUpProfile = new JButton("Load up profile");
 		btnLoadUpProfile.addActionListener(new ActionListener() {
@@ -286,13 +265,15 @@ public class GUI extends JFrame {
 		btnSaveToThis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					BufferedWriter out = new BufferedWriter(new FileWriter(openProfile.getSelectedFile()));
+					BufferedWriter out = new BufferedWriter(new FileWriter(
+							openProfile.getSelectedFile()));
 					out.write(editorPane.getText());
 					out.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 					if (openProfile.getSelectedFile() == null) {
-						System.out.println("File isnt selected , please load a file.");
+						System.out
+								.println("File isnt selected , please load a file.");
 					}
 				}
 
@@ -302,32 +283,24 @@ public class GUI extends JFrame {
 		profileStatistics.add(btnSaveToThis);
 
 		JScrollPane scrollPane = new JScrollPane(editorPane);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane
+				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		// scrollPane.setViewportView(editorPane);
 		scrollPane.setBounds(10, 0, 584, 316);
 		profileStatistics.add(scrollPane);
-<<<<<<< HEAD
 
-		final JPanel matchProfiles = new JPanel();
-		Cards.add(matchProfiles, "name_8901595646374");
-		matchProfiles.setLayout(null);
-
-=======
-		
-		
 		/*
 		 * Match profiles card
 		 */
 		final JPanel matchProfiles = new JPanel();
 		Cards.add(matchProfiles, "name_8901595646374");
-		
+
 		final JTextArea Console = new JTextArea();
 		Console.setBackground(Color.BLACK);
 		Console.setForeground(Color.GREEN);
 		Console.setBounds(231, 161, 363, 188);
 		matchProfiles.add(Console);
-		
->>>>>>> origin/master
+
 		JButton btnBack_1 = new JButton("Back");
 		btnBack_1.setBounds(10, 327, 89, 23);
 		btnBack_1.addActionListener(new ActionListener() {
@@ -340,44 +313,41 @@ public class GUI extends JFrame {
 		});
 		matchProfiles.setLayout(null);
 		matchProfiles.add(btnBack_1);
-<<<<<<< HEAD
 
-=======
-		
 		final JFileChooser openProfile1 = new JFileChooser();
-		openProfile1.setCurrentDirectory(new File(System.getProperty("user.dir") + "\\Profiles"));
+		openProfile1.setCurrentDirectory(new File(System
+				.getProperty("user.dir") + "\\Profiles"));
 		openProfile1.setFileFilter(filter);
-		
 
 		JButton btnLoadProfile = new JButton("Load profile #1");
 		btnLoadProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(openProfile1.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-					find =  new profile(openProfile1.getSelectedFile());
-					Console.append("File to match : "+find.name+"\n");
+				if (openProfile1.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					find = new profile(openProfile1.getSelectedFile());
+					Console.append("File to match : " + find.name + "\n");
 				}
 			}
 		});
 		btnLoadProfile.setBounds(40, 65, 124, 23);
 		matchProfiles.add(btnLoadProfile);
-		
 
-		
 		final JFileChooser openProfile2 = new JFileChooser();
-		openProfile2.setCurrentDirectory(new File(System.getProperty("user.dir") + "\\Profiles"));
+		openProfile2.setCurrentDirectory(new File(System
+				.getProperty("user.dir") + "\\Profiles"));
 		openProfile2.setFileFilter(filter);
 		openProfile2.setMultiSelectionEnabled(true);
-		
+
 		JButton btnNewButton_2 = new JButton("Load profiles to compare");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(openProfile2.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+				if (openProfile2.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 					File[] findFromFiles = openProfile2.getSelectedFiles();
 					findFrom = new profile[findFromFiles.length];
 					int counter = 0;
-					for(File child : findFromFiles){
+					for (File child : findFromFiles) {
 						findFrom[counter] = new profile(child);
-						Console.append("File pool #"+counter+ " Name : "+findFrom[counter].name +"\n");
+						Console.append("File pool #" + counter + " Name : "
+								+ findFrom[counter].name + "\n");
 						counter++;
 					}
 				}
@@ -385,36 +355,36 @@ public class GUI extends JFrame {
 		});
 		btnNewButton_2.setBounds(284, 65, 178, 23);
 		matchProfiles.add(btnNewButton_2);
-		
-		JLabel lblProfileWeWant = new JLabel("<html>Profile we want to compare with the other. <br>\r\naka -> which of the other profiles is this</html>\r\n");
+
+		JLabel lblProfileWeWant = new JLabel(
+				"<html>Profile we want to compare with the other. <br>\r\naka -> which of the other profiles is this</html>\r\n");
 		lblProfileWeWant.setBounds(10, 9, 224, 65);
 		matchProfiles.add(lblProfileWeWant);
-		
-		JLabel lblProfilesWeFind = new JLabel("<html>Profiles we find in them , the selected profile<br>Can select multipule</html>\r\n\r\n");
+
+		JLabel lblProfilesWeFind = new JLabel(
+				"<html>Profiles we find in them , the selected profile<br>Can select multipule</html>\r\n\r\n");
 		lblProfilesWeFind.setBounds(245, 24, 252, 42);
 		matchProfiles.add(lblProfilesWeFind);
-		
-		JLabel label = new JLabel("________________________________________________________________________________________________\r\n_");
+
+		JLabel label = new JLabel(
+				"________________________________________________________________________________________________\r\n_");
 		label.setBounds(10, 99, 584, 14);
 		matchProfiles.add(label);
-		
+
 		ThresholdValue = new JTextField();
 		ThresholdValue.setBounds(93, 158, 86, 20);
 		matchProfiles.add(ThresholdValue);
 		ThresholdValue.setColumns(10);
-		
+
 		final JLabel Threshold = new JLabel("Threshold : ");
 		Threshold.setBounds(14, 158, 69, 17);
 		matchProfiles.add(Threshold);
-		
+
 		JLabel lblConsoleLog = new JLabel("Console log:");
 		lblConsoleLog.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblConsoleLog.setBounds(231, 129, 89, 23);
 		matchProfiles.add(lblConsoleLog);
-		
-		
-		
->>>>>>> origin/master
+
 		btnMakeNewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cards.removeAll();
@@ -441,29 +411,25 @@ public class GUI extends JFrame {
 				Cards.revalidate();
 			}
 		});
-<<<<<<< HEAD
 
-=======
-		
-		
 		JButton btnCompare = new JButton("Compare aka find");
 		btnCompare.setBounds(20, 124, 144, 23);
 		matchProfiles.add(btnCompare);
 		btnCompare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int threshold = Integer.parseInt(ThresholdValue.getText());
-				
-				//Add calling to profile and getting result
-				profile ans = null ;//= new Profiler(find,findFrom,threshold);
-				int valueOfMatch = 0;
-				if(ans == null){
+
+				// Add calling to profile and getting result
+				Profiler profiler = new Profiler();
+				profile ans = profiler.compare(findFrom,find,threshold);
+				float valueOfMatch = profiler.proximityPercent;
+				if (ans == null) {
 					Console.append("Non of the profiles is matching\n");
-				}
-				else{
-					Console.append("Match found : "+ find.name+" With : "+valueOfMatch+"% match\n");
+				} else {
+					Console.append("Match found : " + ans.name + " With : "
+							+ valueOfMatch + "% match\n");
 				}
 			}
 		});
->>>>>>> origin/master
 	}
 }
