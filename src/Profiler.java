@@ -1,7 +1,9 @@
 //this class checks the proximity of one profile to the list of registered profiles 
 //and returns the closest profile up to a threshold variable
 public class Profiler {
-	public float proximityPercent;
+	
+	//public double smallestSum;
+	
 
 	/*
 	 * public static profile compare(profile[] users, profile comparable){
@@ -18,6 +20,10 @@ public class Profiler {
 	 */
 	// gets a list of profiles, a profile to compare to and a threshold of
 	// proximity allowed(the smaller the better)
+	
+	/*
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	Bar's code
 	
 	public profile compare(profile[] users, profile comparable,
 			int threshold) {
@@ -70,5 +76,57 @@ public class Profiler {
 		}
 		return sum / letterProximity.length;
 	}
-
+*/
+	//Bar's code
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public static profile overallCompare(profile[] users, profile compareTo){
+		
+		for(int i = 0; i < users.length; i++){
+			store(compareAndSum(users[i], compareTo));
+		}
+		
+	}
+	
+	public static int findTheSmallestNumberInTheArray(int[] a){
+		int min = 0;
+		
+		for(int i = 0; i < a.length - 1; i++){
+			for(int j = i + 1; j < a.length; j++){
+				if(i < j){
+					min = i;
+				}
+			}
+		}
+		return min;
+	}
+	
+	//gives us the sum of a given array.
+	public static double lastSum(double[] a){
+		
+		double sum = 0;
+		
+		for(int i = 0; i < a.length; i++){
+			sum += a[i];
+		}
+		return sum;
+	}
+	
+	public static double compareAndSum(profile compareTo, profile b){
+		
+		double sum = 0;
+		
+		for(int i = 0; i < b.letters.length; i++){
+			sum += Math.abs(b.letters[i].avgPressTime - compareTo.letters[i].avgPressTime);
+		}
+		
+		return sum;
+	}
+	public static double[] store (double a){
+		
+	}
 }
+
+	
+
+	
+	

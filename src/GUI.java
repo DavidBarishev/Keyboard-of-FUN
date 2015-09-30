@@ -421,7 +421,7 @@ public class GUI extends JFrame {
 
 				// Add calling to profile and getting result
 				Profiler profiler = new Profiler();
-				profile ans = profiler.compare(findFrom,find,threshold);
+				profile ans = profiler.compare(users, compareTo)(findFrom,find,threshold);
 				float valueOfMatch = profiler.proximityPercent;
 				if (ans == null) {
 					Console.append("Non of the profiles is matching\n");

@@ -1,7 +1,7 @@
 //The data collected to a single letter
 public class letter {
 	public int avgPressTime;
-	public int timesPressed;
+	private int timesPressed;
 
 	letter() {
 		avgPressTime = 0;
