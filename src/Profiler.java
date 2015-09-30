@@ -36,7 +36,7 @@ public class Profiler {
 
 	private static float avgProximity(letter[] letters) {
 		int[] lettersTime = new int[23];
-		for(int i = 0;i<23;i++){
+		for(int i = 0;i < 23;i++){
 			lettersTime[i]=letters[i].avgPressTime;
 		}
 		return avgProximity(lettersTime);
