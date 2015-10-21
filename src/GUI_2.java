@@ -158,7 +158,7 @@ public class GUI_2 {
 				}
 
 				for (int i = index + 1; i < files.length; i++) {
-					filesWithoutFirst[i] = files[i - 1];
+					filesWithoutFirst[i - 1] = files[i];
 				}
 				
 				profile[] profiles = new profile[filesWithoutFirst.length];
