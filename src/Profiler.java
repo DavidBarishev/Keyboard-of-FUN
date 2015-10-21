@@ -23,7 +23,7 @@ public class Profiler {
 	
 	/*
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Bar's code
+	Barr's code
 	
 	public profile compare(profile[] users, profile comparable,
 			int threshold) {
@@ -77,7 +77,7 @@ public class Profiler {
 		return sum / letterProximity.length;
 	}
 */
-	//Bar's code
+	//Barr's code
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static profile overallCompare(profile[] users, profile compareTo){
 		
