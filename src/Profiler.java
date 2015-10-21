@@ -34,6 +34,8 @@ public class Profiler {
 			}
 		}
 		if (lettersChecked != 0) {
+			System.out.println(user.avgIdleTime);
+			System.out.println(user.name);
 			return (averagePercentange / lettersChecked * 7 + (((Math
 					.abs(optionUser.avgIdleTime - user.avgIdleTime)) * 100) / user.avgIdleTime) * 3) / 10;
 		}

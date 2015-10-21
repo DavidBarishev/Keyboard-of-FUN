@@ -20,7 +20,7 @@ public class profile {
 	public profile(File file) {
 		// initializing the array
 
-		letters = new letter[24];
+		letters = new letter[26];
 		for (int i = 0; i < letters.length; i++) {
 			letters[i] = new letter();
 		}
@@ -34,7 +34,7 @@ public class profile {
 			name = br.readLine();
 
 			// Go through the page and pick up the numbers
-			for (int i = 0; i < 23; ++i) {
+			for (int i = 0; i <= 25; i++) {
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
 			avgIdleTime = Integer.parseInt(br.readLine());

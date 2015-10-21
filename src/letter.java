@@ -17,4 +17,8 @@ public class letter {
 		avgPressTime = (avgPressTime * timesPressed + t) / (timesPressed + 1);
 		timesPressed++;
 	}
+	
+	public String toString(){
+		return "Letter : " + this +  " : " + avgPressTime;
+	}
 }
