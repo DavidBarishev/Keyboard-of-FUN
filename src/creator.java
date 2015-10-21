@@ -28,7 +28,8 @@ public class creator {
 	}
 
 	public void addIdleTime(int idleTimeIn) {
-		avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / timesPressed + 1;
+		System.out.println(timesPressed + 1);
+		avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / (timesPressed + 1);
 		timesPressed++;
 	}
 
