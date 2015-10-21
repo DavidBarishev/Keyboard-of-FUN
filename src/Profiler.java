@@ -1,16 +1,25 @@
+import com.sun.nio.sctp.PeerAddressChangeNotification;
+
+import javafx.util.converter.PercentageStringConverter;
+
 //this class checks the proximity of one profile to the list of registered profiles 
 //and returns the closest profile up to a threshold variable
 public class Profiler {
 
-	public static profile overallCompare(profile[] users, profile profile) {
+	public static profile overallCompare(profile[] users, profile profile , int limit) {
 
 		int[] percentagePerUser = new int[users.length];
 
 		for (int i = 0; i < users.length; i++) {
 			percentagePerUser[i] = percentageForProfile(profile, users[i]);
 		}
+		int bestPlace = bestMatch(percentagePerUser);
+		
+		if(percentagePerUser[bestPlace] > limit){
+			return null;
+		}
 
-		return users[bestMatch(percentagePerUser)];
+		return users[bestPlace];
 	}
 
 	// userit = user in she form.
