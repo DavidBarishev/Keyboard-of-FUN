@@ -6,7 +6,7 @@ import javafx.util.converter.PercentageStringConverter;
 //and returns the closest profile up to a threshold variable
 public class Profiler {
 
-	public static profile overallCompare(profile[] users, profile profile , int limit) {
+	public static profile overallCompare(profile[] users, profile profile, int limit) {
 
 		int[] percentagePerUser = new int[users.length];
 
@@ -14,8 +14,8 @@ public class Profiler {
 			percentagePerUser[i] = percentageForProfile(profile, users[i]);
 		}
 		int bestPlace = bestMatch(percentagePerUser);
-		
-		if(percentagePerUser[bestPlace] > limit){
+
+		if (percentagePerUser[bestPlace] > limit) {
 			return null;
 		}
 
@@ -26,14 +26,15 @@ public class Profiler {
 	private static int percentageForProfile(profile user, profile optionUser) {
 
 		int averagePercentange = 0;
-
+		int lettersChecked = 0;
 		for (int i = 0; i < user.letters.length; i++) {
-			averagePercentange += ((Math.abs(optionUser.letters[i].avgPressTime
-					- user.letters[i].avgPressTime)) * 100)
-					/ user.letters[i].avgPressTime;
+			if (user.letters[i].avgPressTime != 0) {
+				averagePercentange += ((Math.abs(optionUser.letters[i].avgPressTime - user.letters[i].avgPressTime))
+						* 100) / user.letters[i].avgPressTime;
+			}
 		}
 
-		return averagePercentange / 26;
+		return averagePercentange / lettersChecked;
 	}
 
 	public static int bestMatch(int[] percentageForUsers) {
