@@ -37,7 +37,7 @@ public class Profiler {
 		if (lettersChecked != 0) {
 			return averagePercentange / lettersChecked;
 		}
-		return averagePercentange / 26;
+		return 101;
 
 	}
 
