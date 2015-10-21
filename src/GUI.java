@@ -41,8 +41,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager
-							.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -93,8 +92,7 @@ public class GUI extends JFrame {
 		btnNewButton.setBounds(10, 76, 140, 23);
 		MenuPanel.add(btnNewButton);
 
-		JLabel lblOpensANew = new JLabel(
-				"<html> Opens a new profile with profile syntex for debugging</html>");
+		JLabel lblOpensANew = new JLabel("<html> Opens a new profile with profile syntex for debugging</html>");
 		lblOpensANew.setBounds(160, 72, 342, 31);
 		MenuPanel.add(lblOpensANew);
 
@@ -108,104 +106,100 @@ public class GUI extends JFrame {
 		lblNewLabel_1.setBounds(160, 135, 347, 40);
 		MenuPanel.add(lblNewLabel_1);
 		final creator a = new creator();
-		
-				final JPanel ProfileMaker = new JPanel();
-				Cards.add(ProfileMaker, "name_39289054579067");
-				ProfileMaker.setLayout(null);
-				textField = new JTextField();
-				textField.addKeyListener(new KeyAdapter() {
-					long start_time;
-					long end_time;
-					int timePressed;
-					char charPressed;
 
-					@Override
-					public void keyPressed(KeyEvent e) {
-						if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
-								|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
-							start_time = System.currentTimeMillis();
-						}
-					}
+		final JPanel ProfileMaker = new JPanel();
+		Cards.add(ProfileMaker, "name_39289054579067");
+		ProfileMaker.setLayout(null);
+		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			long start_time;
+			long end_time;
+			int timePressed;
+			char charPressed;
 
-					@Override
-					public void keyReleased(KeyEvent e) {
-						if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
-							end_time = System.currentTimeMillis();
-							timePressed = (int) (end_time - start_time);
-							System.out.println(timePressed);
-							a.add((char) (charPressed + 32), timePressed);
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+					start_time = System.currentTimeMillis();
+				}
+			}
 
-						} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
-							end_time = System.currentTimeMillis();
-							timePressed = (int) (end_time - start_time);
-							System.out.println(timePressed);
-							a.add(charPressed, timePressed);
-						}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
+					end_time = System.currentTimeMillis();
+					timePressed = (int) (end_time - start_time);
+					System.out.println(timePressed);
+					a.add((char) (charPressed + 32), timePressed);
 
-					}
+				} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
+					end_time = System.currentTimeMillis();
+					timePressed = (int) (end_time - start_time);
+					System.out.println(timePressed);
+					a.add(charPressed, timePressed);
+				}
 
-					@Override
-					public void keyTyped(KeyEvent e) {
-						if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
-								|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
-							charPressed = e.getKeyChar();
-							System.out.println("key character = '" + e.getKeyChar()
-									+ "'");
-						}
-					}
-				});
-				textField.setBounds(10, 201, 574, 20);
-				ProfileMaker.add(textField);
-				textField.setColumns(10);
-				
-						JLabel lblNewLabel = new JLabel(
-								"<html>This is the text that needs to be displayed</html>");
-						lblNewLabel.setForeground(Color.BLACK);
-						lblNewLabel.setBackground(Color.RED);
-						lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-						lblNewLabel.setBounds(10, 11, 574, 124);
-						
-								ProfileMaker.add(lblNewLabel);
-								
-										JLabel lblUserInputLine = new JLabel("User input line");
-										lblUserInputLine.setBounds(10, 176, 89, 14);
-										ProfileMaker.add(lblUserInputLine);
-										
-												JButton btnSaveProfile = new JButton("Save profile");
-												
-														btnSaveProfile.setBounds(142, 298, 125, 23);
-														
-																ProfileMaker.add(btnSaveProfile);
-																
-																		textField_1 = new JTextField();
-																		textField_1.setBounds(276, 298, 86, 23);
-																		ProfileMaker.add(textField_1);
-																		textField_1.setColumns(10);
-																		
-																				JLabel lblUserName = new JLabel("User Name");
-																				lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
-																				lblUserName.setBounds(276, 273, 86, 14);
-																				
-																						ProfileMaker.add(lblUserName);
-																						
-																								btnSaveProfile.addActionListener(new ActionListener() {
-																									public void actionPerformed(ActionEvent arg0) {
-																										a.finish(textField_1.getText());
-																									}
-																								});
-																								
-																										JButton btnBacl = new JButton("Back");
-																										btnBacl.addActionListener(new ActionListener() {
-																											public void actionPerformed(ActionEvent arg0) {
-																												Cards.removeAll();
-																												Cards.add(MenuPanel);
-																												Cards.repaint();
-																												Cards.revalidate();
-																											}
-																										});
-																										btnBacl.setBounds(10, 327, 89, 23);
-																										
-																												ProfileMaker.add(btnBacl);
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+					charPressed = e.getKeyChar();
+					System.out.println("key character = '" + e.getKeyChar() + "'");
+				}
+			}
+		});
+		textField.setBounds(10, 201, 574, 20);
+		ProfileMaker.add(textField);
+		textField.setColumns(10);
+
+		JLabel lblNewLabel = new JLabel("<html>This is the text that needs to be displayed</html>");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.RED);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 11, 574, 124);
+
+		ProfileMaker.add(lblNewLabel);
+
+		JLabel lblUserInputLine = new JLabel("User input line");
+		lblUserInputLine.setBounds(10, 176, 89, 14);
+		ProfileMaker.add(lblUserInputLine);
+
+		JButton btnSaveProfile = new JButton("Save profile");
+
+		btnSaveProfile.setBounds(142, 298, 125, 23);
+
+		ProfileMaker.add(btnSaveProfile);
+
+		textField_1 = new JTextField();
+		textField_1.setBounds(276, 298, 86, 23);
+		ProfileMaker.add(textField_1);
+		textField_1.setColumns(10);
+
+		JLabel lblUserName = new JLabel("User Name");
+		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUserName.setBounds(276, 273, 86, 14);
+
+		ProfileMaker.add(lblUserName);
+
+		btnSaveProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				a.finish(textField_1.getText());
+			}
+		});
+
+		JButton btnBacl = new JButton("Back");
+		btnBacl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cards.removeAll();
+				Cards.add(MenuPanel);
+				Cards.repaint();
+				Cards.revalidate();
+			}
+		});
+		btnBacl.setBounds(10, 327, 89, 23);
+
+		ProfileMaker.add(btnBacl);
 
 		final JPanel profileStatistics = new JPanel();
 		Cards.add(profileStatistics, "name_8864153784600");
@@ -228,10 +222,8 @@ public class GUI extends JFrame {
 		profileStatistics.add(editorPane);
 
 		final JFileChooser openProfile = new JFileChooser();
-		openProfile
-				.setCurrentDirectory(new File(System.getProperty("user.dir")));
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(
-				"TEXT FILES", "txt", "text");
+		openProfile.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
 		openProfile.setFileFilter(filter);
 		JButton btnLoadUpProfile = new JButton("Load up profile");
 		btnLoadUpProfile.addActionListener(new ActionListener() {
@@ -250,15 +242,13 @@ public class GUI extends JFrame {
 		btnSaveToThis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					BufferedWriter out = new BufferedWriter(new FileWriter(
-							openProfile.getSelectedFile()));
+					BufferedWriter out = new BufferedWriter(new FileWriter(openProfile.getSelectedFile()));
 					out.write(editorPane.getText());
 					out.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 					if (openProfile.getSelectedFile() == null) {
-						System.out
-								.println("File isnt selected , please load a file.");
+						System.out.println("File isnt selected , please load a file.");
 					}
 				}
 
@@ -268,8 +258,7 @@ public class GUI extends JFrame {
 		profileStatistics.add(btnSaveToThis);
 
 		JScrollPane scrollPane = new JScrollPane(editorPane);
-		scrollPane
-				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		// scrollPane.setViewportView(editorPane);
 		scrollPane.setBounds(10, 0, 584, 316);
 		profileStatistics.add(scrollPane);
@@ -300,8 +289,7 @@ public class GUI extends JFrame {
 		matchProfiles.add(btnBack_1);
 
 		final JFileChooser openProfile1 = new JFileChooser();
-		openProfile1.setCurrentDirectory(new File(System
-				.getProperty("user.dir") + "\\Profiles"));
+		openProfile1.setCurrentDirectory(new File(System.getProperty("user.dir") + "\\Profiles"));
 		openProfile1.setFileFilter(filter);
 
 		JButton btnLoadProfile = new JButton("Load profile #1");
@@ -317,8 +305,7 @@ public class GUI extends JFrame {
 		matchProfiles.add(btnLoadProfile);
 
 		final JFileChooser openProfile2 = new JFileChooser();
-		openProfile2.setCurrentDirectory(new File(System
-				.getProperty("user.dir") + "\\Profiles"));
+		openProfile2.setCurrentDirectory(new File(System.getProperty("user.dir") + "\\Profiles"));
 		openProfile2.setFileFilter(filter);
 		openProfile2.setMultiSelectionEnabled(true);
 
@@ -331,8 +318,7 @@ public class GUI extends JFrame {
 					int counter = 0;
 					for (File child : findFromFiles) {
 						findFrom[counter] = new profile(child);
-						Console.append("File pool #" + counter + " Name : "
-								+ findFrom[counter].name + "\n");
+						Console.append("File pool #" + counter + " Name : " + findFrom[counter].name + "\n");
 						counter++;
 					}
 				}
