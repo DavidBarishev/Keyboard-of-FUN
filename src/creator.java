@@ -12,7 +12,7 @@ public class creator {
 		// avgIdleTime = 0;
 		// timesPressed = 0;
 		// lastRelease = 0;
-		letters = new letter[24];
+		letters = new letter[26];
 		for (int i = 0; i < letters.length; i++) {
 			letters[i] = new letter();
 		}
@@ -28,7 +28,6 @@ public class creator {
 	}
 
 	public void addIdleTime(int idleTimeIn) {
-		System.out.println(timesPressed + 1);
 		avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / (timesPressed + 1);
 		timesPressed++;
 	}
