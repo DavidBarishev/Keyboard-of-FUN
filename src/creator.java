@@ -5,9 +5,8 @@ import java.io.IOException;
 public class creator {
 	private letter[] letters;
 
-	// private int timesPressed;
-	// private int avgIdleTime;
-	// private int lastRelease;
+	private int timesPressed = 0;
+	private int avgIdleTime;
 
 	creator() {
 		// avgIdleTime = 0;
@@ -28,8 +27,13 @@ public class creator {
 		// timesPressed++;
 	}
 
+	public void addIdleTime(int idleTimeIn) {
+		avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / timesPressed + 1;
+		timesPressed++;
+	}
+
 	public void finish(String name) {
-		profile profile = new profile(name, letters);
+		profile profile = new profile(name, letters, avgIdleTime);
 		try {
 			profile.output();
 		} catch (IOException e) {

@@ -9,10 +9,12 @@ import java.io.IOException;
 public class profile {
 	public String name;
 	public letter[] letters;
+	public int avgIdleTime;
 
-	public profile(String n, letter[] l) {
+	public profile(String n, letter[] l, int avgIdleTimeIn) {
 		name = n;
 		letters = l;
+		avgIdleTime = avgIdleTimeIn;
 	}
 
 	public profile(File file) {
@@ -45,8 +47,7 @@ public class profile {
 	}
 
 	public void output() throws IOException {
-		File profile = new File(System.getProperty("user.dir") + "\\Profiles\\"
-				+ name + ".txt");
+		File profile = new File(System.getProperty("user.dir") + "\\Profiles\\" + name + ".txt");
 
 		FileWriter writer = new FileWriter(profile);
 		BufferedWriter out = new BufferedWriter(writer);
@@ -62,8 +63,7 @@ public class profile {
 	public String toString() {
 		String ans = name + "\n";
 		for (int i = 0; i < letters.length; i++) {
-			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime
-					+ "ms \n";
+			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime + "ms \n";
 		}
 		return ans;
 	}
