@@ -105,40 +105,46 @@ public class GUI extends JFrame {
 				"<html>This will macth between short message to a profile and will show the statistics made </html>");
 		lblNewLabel_1.setBounds(160, 135, 347, 40);
 		MenuPanel.add(lblNewLabel_1);
-		final creator a = new creator();
 
 		final JPanel ProfileMaker = new JPanel();
 		Cards.add(ProfileMaker, "name_39289054579067");
 		ProfileMaker.setLayout(null);
 		textField = new JTextField();
+		
+		creator creator = new creator();
 		textField.addKeyListener(new KeyAdapter() {
-			long start_time;
-			long end_time;
-			int timePressed;
-			char charPressed;
+			private long start_time;
+			private long end_time;
+			private int timePressed;
+			private char charPressed;
+			private long lastTimePressed = -1;
 
 			@Override
 			public void keyPressed(KeyEvent e) {
+
 				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
 					start_time = System.currentTimeMillis();
+
 				}
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
-					end_time = System.currentTimeMillis();
-					timePressed = (int) (end_time - start_time);
-					System.out.println(timePressed);
-					a.add((char) (charPressed + 32), timePressed);
 
-				} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
-					end_time = System.currentTimeMillis();
-					timePressed = (int) (end_time - start_time);
-					System.out.println(timePressed);
-					a.add(charPressed, timePressed);
+				if (lastTimePressed == -1) {
+					lastTimePressed = System.currentTimeMillis();
 				}
 
+				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91) || (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+					end_time = System.currentTimeMillis();
+					timePressed = (int) (end_time - start_time);
+					System.out.println("Time pressed : " + timePressed);
+
+					System.out.println("idle for : " + (end_time - lastTimePressed));
+					creator.add(Character.toLowerCase(charPressed), timePressed);
+					creator.addIdleTime((int) (end_time - lastTimePressed));
+					lastTimePressed = end_time;
+				}
 			}
 
 			@Override
@@ -184,7 +190,7 @@ public class GUI extends JFrame {
 
 		btnSaveProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				a.finish(textField_1.getText());
+				creator.finish(textField_1.getText());
 			}
 		});
 
