@@ -53,6 +53,8 @@ public class GUI_2 {
 		panel.setLayout(null);
 		
 		textField = new JTextField();
+		
+		creator creator = new creator();
 		textField.addKeyListener(new KeyAdapter() {
 			private long start_time;
 			private long end_time;
@@ -85,7 +87,8 @@ public class GUI_2 {
 					System.out.println("Time pressed : " + timePressed);
 					
 					System.out.println("idle for : " + ( end_time - lastTimePressed));
-					//a.add(Character.toLowerCase(charPressed), timePressed,lastTimePressed - end_time);
+					creator.add(Character.toLowerCase(charPressed),timePressed);
+					creator.addIdleTime((int)(end_time - lastTimePressed));
 					lastTimePressed = end_time;
 				}
 			}
