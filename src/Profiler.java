@@ -1,7 +1,3 @@
-import com.sun.nio.sctp.PeerAddressChangeNotification;
-
-import javafx.util.converter.PercentageStringConverter;
-
 //this class checks the proximity of one profile to the list of registered profiles 
 //and returns the closest profile up to a threshold variable
 public class Profiler {
