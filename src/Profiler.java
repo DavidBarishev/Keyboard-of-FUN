@@ -31,10 +31,14 @@ public class Profiler {
 			if (user.letters[i].avgPressTime != 0) {
 				averagePercentange += ((Math.abs(optionUser.letters[i].avgPressTime - user.letters[i].avgPressTime))
 						* 100) / user.letters[i].avgPressTime;
+				lettersChecked++;
 			}
 		}
+		if (lettersChecked != 0) {
+			return averagePercentange / lettersChecked;
+		}
+		return averagePercentange / 26;
 
-		return averagePercentange / lettersChecked;
 	}
 
 	public static int bestMatch(int[] percentageForUsers) {
