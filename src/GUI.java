@@ -420,14 +420,11 @@ public class GUI extends JFrame {
 				int threshold = Integer.parseInt(ThresholdValue.getText());
 
 				// Add calling to profile and getting result
-				Profiler profiler = new Profiler();
-				profile ans = profiler.compare(users, compareTo)(findFrom,find,threshold);
-				float valueOfMatch = profiler.proximityPercent;
+				profile ans = Profiler.overallCompare(findFrom, find, threshold);
 				if (ans == null) {
 					Console.append("Non of the profiles is matching\n");
 				} else {
-					Console.append("Match found : " + ans.name + " With : "
-							+ valueOfMatch + "% match\n");
+					Console.append("Match found : " + ans.name);
 				}
 			}
 		});
