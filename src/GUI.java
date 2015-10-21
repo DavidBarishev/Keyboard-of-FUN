@@ -107,105 +107,105 @@ public class GUI extends JFrame {
 				"<html>This will macth between short message to a profile and will show the statistics made </html>");
 		lblNewLabel_1.setBounds(160, 135, 347, 40);
 		MenuPanel.add(lblNewLabel_1);
-
-		final JPanel ProfileMaker = new JPanel();
-		Cards.add(ProfileMaker, "name_39289054579067");
-		ProfileMaker.setLayout(null);
 		final creator a = new creator();
-		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
-			long start_time;
-			long end_time;
-			int timePressed;
-			char charPressed;
+		
+				final JPanel ProfileMaker = new JPanel();
+				Cards.add(ProfileMaker, "name_39289054579067");
+				ProfileMaker.setLayout(null);
+				textField = new JTextField();
+				textField.addKeyListener(new KeyAdapter() {
+					long start_time;
+					long end_time;
+					int timePressed;
+					char charPressed;
 
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
-						|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
-					start_time = System.currentTimeMillis();
-				}
-			}
+					@Override
+					public void keyPressed(KeyEvent e) {
+						if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
+								|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+							start_time = System.currentTimeMillis();
+						}
+					}
 
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
-					end_time = System.currentTimeMillis();
-					timePressed = (int) (end_time - start_time);
-					System.out.println(timePressed);
-					a.add((char) (charPressed + 32), timePressed);
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if ((int) e.getKeyChar() > 64 && (int) e.getKeyChar() < 91) {
+							end_time = System.currentTimeMillis();
+							timePressed = (int) (end_time - start_time);
+							System.out.println(timePressed);
+							a.add((char) (charPressed + 32), timePressed);
 
-				} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
-					end_time = System.currentTimeMillis();
-					timePressed = (int) (end_time - start_time);
-					System.out.println(timePressed);
-					a.add(charPressed, timePressed);
-				}
+						} else if (e.getKeyChar() > 96 && e.getKeyChar() < 123) {
+							end_time = System.currentTimeMillis();
+							timePressed = (int) (end_time - start_time);
+							System.out.println(timePressed);
+							a.add(charPressed, timePressed);
+						}
 
-			}
+					}
 
-			@Override
-			public void keyTyped(KeyEvent e) {
-				if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
-						|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
-					charPressed = e.getKeyChar();
-					System.out.println("key character = '" + e.getKeyChar()
-							+ "'");
-				}
-			}
-		});
-		textField.setBounds(10, 201, 574, 20);
-		ProfileMaker.add(textField);
-		textField.setColumns(10);
-
-		JLabel lblNewLabel = new JLabel(
-				"<html>This is the text that needs to be displayed</html>");
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBackground(Color.RED);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 574, 124);
-
-		ProfileMaker.add(lblNewLabel);
-
-		JLabel lblUserInputLine = new JLabel("User input line");
-		lblUserInputLine.setBounds(10, 176, 89, 14);
-		ProfileMaker.add(lblUserInputLine);
-
-		JButton btnSaveProfile = new JButton("Save profile");
-
-		btnSaveProfile.setBounds(142, 298, 125, 23);
-
-		ProfileMaker.add(btnSaveProfile);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(276, 298, 86, 23);
-		ProfileMaker.add(textField_1);
-		textField_1.setColumns(10);
-
-		JLabel lblUserName = new JLabel("User Name");
-		lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUserName.setBounds(276, 273, 86, 14);
-
-		ProfileMaker.add(lblUserName);
-
-		btnSaveProfile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				a.finish(textField_1.getText());
-			}
-		});
-
-		JButton btnBacl = new JButton("Back");
-		btnBacl.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Cards.removeAll();
-				Cards.add(MenuPanel);
-				Cards.repaint();
-				Cards.revalidate();
-			}
-		});
-		btnBacl.setBounds(10, 327, 89, 23);
-
-		ProfileMaker.add(btnBacl);
+					@Override
+					public void keyTyped(KeyEvent e) {
+						if ((e.getKeyChar() > 64 && e.getKeyCode() < 91)
+								|| (e.getKeyChar() > 96 && e.getKeyCode() < 123)) {
+							charPressed = e.getKeyChar();
+							System.out.println("key character = '" + e.getKeyChar()
+									+ "'");
+						}
+					}
+				});
+				textField.setBounds(10, 201, 574, 20);
+				ProfileMaker.add(textField);
+				textField.setColumns(10);
+				
+						JLabel lblNewLabel = new JLabel(
+								"<html>This is the text that needs to be displayed</html>");
+						lblNewLabel.setForeground(Color.BLACK);
+						lblNewLabel.setBackground(Color.RED);
+						lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+						lblNewLabel.setBounds(10, 11, 574, 124);
+						
+								ProfileMaker.add(lblNewLabel);
+								
+										JLabel lblUserInputLine = new JLabel("User input line");
+										lblUserInputLine.setBounds(10, 176, 89, 14);
+										ProfileMaker.add(lblUserInputLine);
+										
+												JButton btnSaveProfile = new JButton("Save profile");
+												
+														btnSaveProfile.setBounds(142, 298, 125, 23);
+														
+																ProfileMaker.add(btnSaveProfile);
+																
+																		textField_1 = new JTextField();
+																		textField_1.setBounds(276, 298, 86, 23);
+																		ProfileMaker.add(textField_1);
+																		textField_1.setColumns(10);
+																		
+																				JLabel lblUserName = new JLabel("User Name");
+																				lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblUserName.setBounds(276, 273, 86, 14);
+																				
+																						ProfileMaker.add(lblUserName);
+																						
+																								btnSaveProfile.addActionListener(new ActionListener() {
+																									public void actionPerformed(ActionEvent arg0) {
+																										a.finish(textField_1.getText());
+																									}
+																								});
+																								
+																										JButton btnBacl = new JButton("Back");
+																										btnBacl.addActionListener(new ActionListener() {
+																											public void actionPerformed(ActionEvent arg0) {
+																												Cards.removeAll();
+																												Cards.add(MenuPanel);
+																												Cards.repaint();
+																												Cards.revalidate();
+																											}
+																										});
+																										btnBacl.setBounds(10, 327, 89, 23);
+																										
+																												ProfileMaker.add(btnBacl);
 
 		final JPanel profileStatistics = new JPanel();
 		Cards.add(profileStatistics, "name_8864153784600");
