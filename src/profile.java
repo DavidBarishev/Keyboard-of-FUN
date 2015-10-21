@@ -37,7 +37,7 @@ public class profile {
 			for (int i = 0; i < 23; ++i) {
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
-
+			avgIdleTime = Integer.parseInt(br.readLine());
 			// Close buffers
 			br.close();
 		} catch (IOException e) {
@@ -57,6 +57,8 @@ public class profile {
 			out.append(Integer.toString(letters[i].avgPressTime));
 			out.newLine();
 		}
+		out.append(Integer.toString(avgIdleTime));
+		out.newLine();
 		out.close();
 	}
 
