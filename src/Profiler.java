@@ -37,7 +37,7 @@ public class Profiler {
 			System.out.println(user.avgIdleTime);
 			System.out.println(user.name);
 			return (averagePercentange / lettersChecked * 7 + (((Math
-					.abs(optionUser.avgIdleTime - user.avgIdleTime)) * 100) / user.avgIdleTime) * 3) / 10;
+					.abs(optionUser.avgIdleTime - user.avgIdleTime))) / user.avgIdleTime) * 3) / 10;
 		}
 		return 101;
 
