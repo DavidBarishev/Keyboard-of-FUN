@@ -5,10 +5,10 @@ public class Profiler {
 	public static profile overallCompare(profile[] users, profile profile,
 			int limit) {
 
-		int[] percentagePerUser = new int[users.length];
+		double[] percentagePerUser = new double [users.length];
 
 		for (int i = 0; i < users.length; i++) {
-			percentagePerUser[i] = percentageForProfile(profile, users[i]);
+			percentagePerUser[i] =  percentageForProfile(profile, users[i]);
 		}
 		int bestPlace = bestMatch(percentagePerUser);
 
@@ -20,7 +20,7 @@ public class Profiler {
 	}
 
 	// userit = user in she form.
-	private static int percentageForProfile(profile user, profile optionUser) {
+	private static double percentageForProfile(profile user, profile optionUser) {
 
 		int averagePercentange = 0;
 		int lettersChecked = 0;
@@ -36,18 +36,18 @@ public class Profiler {
 		if (lettersChecked != 0) {
 			System.out.println(user.avgIdleTime);
 			System.out.println(user.name);
-			return (averagePercentange / lettersChecked * 7 + (((Math
+			return (double)(averagePercentange / lettersChecked * 7 + (((Math
 					.abs(optionUser.avgIdleTime - user.avgIdleTime))) / user.avgIdleTime) * 3) / 10;
 		}
 		return 101;
 
 	}
 
-	public static int bestMatch(int[] percentageForUsers) {
+	public static int bestMatch(double[] percentagePerUser) {
 		int ans = 0;
 
-		for (int i = 1; i < percentageForUsers.length; i++) {
-			if (percentageForUsers[ans] > percentageForUsers[i]) {
+		for (int i = 1; i < percentagePerUser.length; i++) {
+			if (percentagePerUser[ans] > percentagePerUser[i]) {
 				ans = i;
 			}
 		}

@@ -1,6 +1,6 @@
 //The data collected to a single letter
 public class letter {
-	public float avgPressTime;
+	public int avgPressTime;
 	private int timesPressed;
 
 	letter() {

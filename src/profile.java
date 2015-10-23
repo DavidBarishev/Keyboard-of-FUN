@@ -9,7 +9,7 @@ import java.io.IOException;
 public class profile {
 	public String name;
 	public letter[] letters;
-	public double avgIdleTime;
+	public int avgIdleTime;
 
 	public profile(String n, letter[] l, int avgIdleTimeIn) {
 		name = n;
