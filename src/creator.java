@@ -28,8 +28,10 @@ public class creator {
 	}
 
 	public void addIdleTime(int idleTimeIn) {
-		avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / (timesPressed + 1);
-		timesPressed++;
+		if (idleTimeIn < 1000) {
+			avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / (timesPressed + 1);
+			timesPressed++;
+		}
 	}
 
 	public void finish(String name) {

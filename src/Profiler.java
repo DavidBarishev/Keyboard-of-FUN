@@ -10,6 +10,12 @@ public class Profiler {
 		for (int i = 0; i < users.length; i++) {
 			percentagePerUser[i] =  percentageForProfile(profile, users[i]);
 		}
+		
+		for(int i = 0 ; i < users.length ; i++){
+			System.out.println("Name : "+ users[i].name + " Odds : "+ percentagePerUser[i]+'%');
+		}
+		
+		
 		int bestPlace = bestMatch(percentagePerUser);
 
 		if (percentagePerUser[bestPlace] > limit) {
@@ -34,8 +40,6 @@ public class Profiler {
 			}
 		}
 		if (lettersChecked != 0) {
-			System.out.println(user.avgIdleTime);
-			System.out.println(user.name);
 			return (double)(averagePercentange / lettersChecked * 7 + (((Math
 					.abs(optionUser.avgIdleTime - user.avgIdleTime))) / user.avgIdleTime) * 3) / 10;
 		}
