@@ -8,9 +8,10 @@ public class creator {
 	private ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList = new ArrayList<timeBetweenTwoChars>();
 
 	private int timesPressed = 0;
-	private int avgIdleTime;
+	
+	private final int MAX_IDLE_TIME_BETWEEN_LETTERS = 1000;
 
-	creator() {
+	public creator() {
 		// avgIdleTime = 0;
 		// timesPressed = 0;
 		// lastRelease = 0;
@@ -31,14 +32,16 @@ public class creator {
 
 	public void addIdleTime(timeBetweenTwoChars time) {
 		if(time != null){
-			if(time.getAvgIdleTime() < 1000){
+			if(time.getAvgIdleTime() < this.MAX_IDLE_TIME_BETWEEN_LETTERS){
+				boolean wasFound = false;
 				for(timeBetweenTwoChars element : this.idleTimeBetweenCharsList){
 					if(element.equals(time)){
 						element.addIdleTime(time.getAvgIdleTime());
+						wasFound = true;
 					}
-					else{
-						this.idleTimeBetweenCharsList.add(time);
-					}
+				}
+				if(!wasFound){
+					this.idleTimeBetweenCharsList.add(time);
 				}
 			}
 		}
@@ -46,6 +49,7 @@ public class creator {
 
 	public void finish(String name) {
 		profile profile = new profile(name, letters, avgIdleTime,idleTimeBetweenCharsList);
+		System.out.println(profile);
 		try {
 			profile.output();
 		} catch (IOException e) {
