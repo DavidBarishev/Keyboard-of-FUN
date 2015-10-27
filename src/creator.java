@@ -1,9 +1,11 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 //Creating a profile according to what the GUI sends and return s the data with a name at the end
 //needs more variables of identity for the profile!
 public class creator {
 	private letter[] letters;
+	private ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
 
 	private int timesPressed = 0;
 	private int avgIdleTime;
@@ -27,15 +29,23 @@ public class creator {
 		// timesPressed++;
 	}
 
-	public void addIdleTime(int idleTimeIn) {
-		if (idleTimeIn < 1000) {
-			avgIdleTime = ((avgIdleTime * timesPressed) + idleTimeIn) / (timesPressed + 1);
-			timesPressed++;
+	public void addIdleTime(timeBetweenTwoChars time) {
+		if(time != null){
+			if(time.getAvgIdleTime() < 1000){
+				for(timeBetweenTwoChars element : this.idleTimeBetweenCharsList){
+					if(element.equals(time)){
+						element.addIdleTime(time.getAvgIdleTime());
+					}
+					else{
+						this.idleTimeBetweenCharsList.add(time);
+					}
+				}
+			}
 		}
 	}
 
 	public void finish(String name) {
-		profile profile = new profile(name, letters, avgIdleTime);
+		profile profile = new profile(name, letters, avgIdleTime,idleTimeBetweenCharsList);
 		try {
 			profile.output();
 		} catch (IOException e) {

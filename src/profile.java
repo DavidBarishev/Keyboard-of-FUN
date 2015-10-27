@@ -4,17 +4,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 //all the data collected by the creator
 public class profile {
 	public String name;
 	public letter[] letters;
 	public int avgIdleTime;
+	
+	public ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
 
-	public profile(String n, letter[] l, int avgIdleTimeIn) {
+	public profile(String n, letter[] l, int avgIdleTimeIn,ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList ) {
 		name = n;
 		letters = l;
 		avgIdleTime = avgIdleTimeIn;
+		this.idleTimeBetweenCharsList = idleTimeBetweenCharsList;
 	}
 
 	public profile(File file) {
