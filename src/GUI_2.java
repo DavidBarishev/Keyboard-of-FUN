@@ -94,7 +94,6 @@ public class GUI_2 {
 					timePressed = (int) (end_time - start_time);
 					System.out.println("Time pressed : " + timePressed);
 
-					System.out.println("idle for : " + (end_time - lastTimePressed));
 					creator.add(Character.toLowerCase(charPressed), timePressed);
 					
 					if(lastChar != '*'){

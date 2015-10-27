@@ -48,7 +48,7 @@ public class creator {
 	}
 
 	public void finish(String name) {
-		profile profile = new profile(name, letters, avgIdleTime,idleTimeBetweenCharsList);
+		profile profile = new profile(name, letters,idleTimeBetweenCharsList);
 		System.out.println(profile);
 		try {
 			profile.output();

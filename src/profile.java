@@ -14,10 +14,9 @@ public class profile {
 	
 	public ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
 
-	public profile(String n, letter[] l, int avgIdleTimeIn,ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList ) {
+	public profile(String n, letter[] l,ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList ) {
 		name = n;
 		letters = l;
-		avgIdleTime = avgIdleTimeIn;
 		this.idleTimeBetweenCharsList = idleTimeBetweenCharsList;
 	}
 
