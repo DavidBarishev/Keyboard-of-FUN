@@ -71,6 +71,10 @@ public class profile {
 		for (int i = 0; i < letters.length; i++) {
 			ans += (char) (i + (int) 'A') + " : " + letters[i].avgPressTime + "ms \n";
 		}
+		
+		for(timeBetweenTwoChars element : this.idleTimeBetweenCharsList){
+			ans += element.toString() + "\n";
+		}
 		return ans;
 	}
 }

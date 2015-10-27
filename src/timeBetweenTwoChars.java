@@ -22,17 +22,21 @@ public class timeBetweenTwoChars {
 		}
 		return false;
 	}
-	
-	public int getAvgIdleTime(){
+
+	public int getAvgIdleTime() {
 		return this.avgIdleTime;
 	}
-	
-	public char getFirstLetter(){
+
+	public char getFirstLetter() {
 		return this.first;
 	}
-	
-	public char getSecondLetter(){
+
+	public char getSecondLetter() {
 		return this.second;
+	}
+
+	public String toString() {
+		return "[" + this.first + "," + this.second + "]" + " Time : " + this.avgIdleTime + "ms";
 	}
 
 }
