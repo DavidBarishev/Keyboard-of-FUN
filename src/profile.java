@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class profile {
 	public String name;
 	public letter[] letters;
-	public int avgIdleTime;
 	
 	public ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
 
