@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //needs more variables of identity for the profile!
 public class creator {
 	private letter[] letters;
-	private ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
+	private ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList = new ArrayList<timeBetweenTwoChars>();
 
 	private int timesPressed = 0;
 	private int avgIdleTime;

@@ -118,6 +118,7 @@ public class GUI extends JFrame {
 			private int timePressed;
 			private char charPressed;
 			private long lastTimePressed = -1;
+			private char lastChar = '*';
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -142,8 +143,16 @@ public class GUI extends JFrame {
 
 					System.out.println("idle for : " + (end_time - lastTimePressed));
 					creator.add(Character.toLowerCase(charPressed), timePressed);
-					creator.addIdleTime((int) (end_time - lastTimePressed));
-					lastTimePressed = end_time;
+					
+					if(lastChar != '*'){
+						creator.addIdleTime(new timeBetweenTwoChars(lastChar, charPressed,(int) (end_time - lastTimePressed)));
+						System.out.println("[" + lastChar + ","+charPressed+']' + " Time : "+(int) (end_time - lastTimePressed));
+						lastChar = charPressed;
+						lastTimePressed = end_time;
+					}
+					else{
+						lastChar =(char) Character.toLowerCase(charPressed);
+					}
 				}
 			}
 
