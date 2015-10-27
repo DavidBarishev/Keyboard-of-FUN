@@ -11,7 +11,8 @@ public class profile {
 	public String name;
 	public letter[] letters;
 	
-	public ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList;
+	public ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList = new ArrayList<timeBetweenTwoChars>();
+	
 
 	public profile(String n, letter[] l,ArrayList<timeBetweenTwoChars> idleTimeBetweenCharsList ) {
 		name = n;
@@ -39,7 +40,15 @@ public class profile {
 			for (int i = 0; i <= 25; i++) {
 				letters[i] = new letter(Integer.parseInt(br.readLine()));
 			}
-			avgIdleTime = Integer.parseInt(br.readLine());
+			
+			String line = br.readLine();
+			while(line != null){
+				//debugging purposes 
+				//System.out.println(new timeBetweenTwoChars(line.charAt(0), line.charAt(1), Integer.parseInt(line.substring(2))));
+				this.idleTimeBetweenCharsList.add(new timeBetweenTwoChars(line.charAt(0), line.charAt(1), Integer.parseInt(line.substring(2))));
+				line = br.readLine();
+			}
+			
 			// Close buffers
 			br.close();
 		} catch (IOException e) {
@@ -53,14 +62,26 @@ public class profile {
 
 		FileWriter writer = new FileWriter(profile);
 		BufferedWriter out = new BufferedWriter(writer);
+		
+		//Name
 		out.append(name);
 		out.newLine();
+		
+		//Letters
 		for (int i = 0; i < letters.length; i++) {
 			out.append(Integer.toString(letters[i].avgPressTime));
 			out.newLine();
 		}
-		out.append(Integer.toString(avgIdleTime));
-		out.newLine();
+		
+		//Time between chars 
+		
+		for(timeBetweenTwoChars element : this.idleTimeBetweenCharsList){
+			out.append(element.getFirstLetter());
+			out.append(element.getSecondLetter());
+			out.append(Integer.toString(element.getAvgIdleTime()));
+			out.newLine();
+		}
+
 		out.close();
 	}
 
