@@ -35,7 +35,7 @@ public class creator {
 			if(time.getAvgIdleTime() < this.MAX_IDLE_TIME_BETWEEN_LETTERS){
 				boolean wasFound = false;
 				for(timeBetweenTwoChars element : this.idleTimeBetweenCharsList){
-					if(element.equals(time)){
+					if(element.isEqual(time)){
 						element.addIdleTime(time.getAvgIdleTime());
 						wasFound = true;
 					}
