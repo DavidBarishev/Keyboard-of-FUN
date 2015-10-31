@@ -17,9 +17,13 @@ public class timeBetweenTwoChars {
 	}
 	
 	@Override
-	public boolean equals(timeBetweenTwoChars other) {
-		if (other.first == this.first && other.second == this.second) {
-			return true;
+	public boolean equals(Object other) {
+		if(other instanceof timeBetweenTwoChars){
+			timeBetweenTwoChars tmp = (timeBetweenTwoChars) other;
+			if (tmp.first == this.first && tmp.second == this.second) {
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
