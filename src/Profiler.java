@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //this class checks the proximity of one profile to the list of registered profiles 
 //and returns the closest profile up to a threshold variable
 public class Profiler {
@@ -5,17 +7,17 @@ public class Profiler {
 	public static profile overallCompare(profile[] users, profile profile,
 			int limit) {
 
-		double[] percentagePerUser = new double [users.length];
+		double[] percentagePerUser = new double[users.length];
 
 		for (int i = 0; i < users.length; i++) {
-			percentagePerUser[i] =  percentageForProfile(profile, users[i]);
+			percentagePerUser[i] = percentageForProfile(profile, users[i]);
 		}
-		
-		for(int i = 0 ; i < users.length ; i++){
-			System.out.println("Name : "+ users[i].name + " Odds : "+ percentagePerUser[i]+'%');
+
+		for (int i = 0; i < users.length; i++) {
+			System.out.println("Name : " + users[i].name + " Odds : "
+					+ percentagePerUser[i] + '%');
 		}
-		
-		
+
 		int bestPlace = bestMatch(percentagePerUser);
 
 		if (percentagePerUser[bestPlace] > limit) {
@@ -40,11 +42,16 @@ public class Profiler {
 			}
 		}
 		if (lettersChecked != 0) {
-			return (double)(averagePercentange / lettersChecked * 7 + (((Math
-					.abs(optionUser.avgIdleTime - user.avgIdleTime))) / user.avgIdleTime) * 3) / 10;
+			ArrayList <Double> timeDifference = new ArrayList <Double> ();
+			for(timeBetweenTwoChars element : user.idleTimeBetweenCharsList){
+				if(optionUser.idleTimeBetweenCharsList.contains(element)){
+					double difference = Math.abs(element.getAvgIdleTime() - optionUser.idleTimeBetweenCharsList.lastIndexOf(element));
+					double average = (element.getAvgIdleTime() + optionUser.idleTimeBetweenCharsList.lastIndexOf(element)) / 2;
+					timeDifference.add((difference / average) * 100);
+				}	
+			}
 		}
 		return 101;
-
 	}
 
 	public static int bestMatch(double[] percentagePerUser) {
