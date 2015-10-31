@@ -27,17 +27,15 @@ public class Profiler {
 		return users[bestPlace];
 	}
 
-	// userit = user in she form.
 	private static double percentageForProfile(profile user, profile optionUser) {
 
 		int averagePercentange = 0;
 		int lettersChecked = 0;
+		
 		for (int i = 0; i < user.letters.length; i++) {
 			if (user.letters[i].avgPressTime != 0) {
 				averagePercentange += ((Math
-						.abs(optionUser.letters[i].avgPressTime
-								- user.letters[i].avgPressTime)) * 100)
-						/ user.letters[i].avgPressTime;
+						.abs(optionUser.letters[i].avgPressTime - user.letters[i].avgPressTime)) * 100) / user.letters[i].avgPressTime;
 				lettersChecked++;
 			}
 		}
@@ -47,9 +45,11 @@ public class Profiler {
 				if(optionUser.idleTimeBetweenCharsList.contains(element)){
 					double difference = Math.abs(element.getAvgIdleTime() - optionUser.idleTimeBetweenCharsList.lastIndexOf(element));
 					double average = (element.getAvgIdleTime() + optionUser.idleTimeBetweenCharsList.lastIndexOf(element)) / 2;
+					
 					timeDifference.add((difference / average) * 100);
 				}	
 			}
+			
 		}
 		return 101;
 	}
@@ -64,6 +64,29 @@ public class Profiler {
 		}
 		return ans;
 	}
+	
+	public static double averagePercentage(ArrayList <Double> list){
+		
+		int counter = 0;
+		double sum = 0;
+		
+		for(Double element : list){
+			sum = sum + element.doubleValue();
+			counter++;
+		}
+		
+		return sum/counter;
+	}
+	
+	//Maybe, in the future - you should add more arguments and change the formula.
+	public static double overallPercentage(double lowestValue, double HighestValue){
+		
+		double ans = 0;
+		
+		ans = ((lowestValue * 40) + (HighestValue * 60)) / 100;  
+		
+		return ans;	
+	} 
 }
 
 // public double smallestSum;
