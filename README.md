@@ -1,6 +1,6 @@
 # Keyboard-of-FUN
 
-ToDo : \n
--Fix profiler \n
--Add statistical information \n
--Add more tests \n
+ToDo : <br />
+-Fix profiler <br />
+-Add statistical information <br />
+-Add more tests <br />
