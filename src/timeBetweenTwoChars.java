@@ -15,8 +15,9 @@ public class timeBetweenTwoChars {
 		this.avgIdleTime = ((this.avgIdleTime * this.timesPressed) + idleTime) / (this.timesPressed + 1);
 		this.timesPressed++;
 	}
-
-	public boolean isEqual(timeBetweenTwoChars other) {
+	
+	@Override
+	public boolean equals(timeBetweenTwoChars other) {
 		if (other.first == this.first && other.second == this.second) {
 			return true;
 		}
