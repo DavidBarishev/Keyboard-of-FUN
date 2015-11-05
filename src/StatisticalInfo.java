@@ -10,9 +10,8 @@ public class StatisticalInfo {
 	private char[] rightKeyboard = {'i','o','p','k','l','n','m'};
 	
 	private ArrayList<timeBetweenTwoChars> longKeyboardPairs = new ArrayList<timeBetweenTwoChars>();
-	private ArrayList<timeBetweenTwoChars> rightSideOfKeyboard = new ArrayList<timeBetweenTwoChars>();
 	
-	private final int MAX_IDEL_TIME = 300;
+	private final int MAX_IDLE_TIME = 275;
 	
 	public StatisticalInfo(ArrayList<timeBetweenTwoChars> pairsList){
 		this.pairsList = pairsList;
@@ -30,7 +29,7 @@ public class StatisticalInfo {
 	
 	private void setNumberOfHands(){
 		getAllLongPairs();
-		if(getAverageTimeOfLongPairs() > MAX_IDEL_TIME){
+		if(getAverageTimeOfLongPairs() > MAX_IDLE_TIME){
 			this.oneHand = true;
 			this.twoHands =false;
 		}
@@ -58,5 +57,11 @@ public class StatisticalInfo {
 			}
 		}
 		return false;
+	}
+	public boolean getTwoHands(){
+		return this.twoHands;
+	}
+	public boolean getOneHand(){
+		return this.oneHand;
 	}
 }

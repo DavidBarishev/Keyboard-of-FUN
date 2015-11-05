@@ -87,6 +87,16 @@ public class Profiler {
 		
 		return ans;	
 	} 
+
+	//TODO combinations like "ea" "aa" "oo".
+	//finds most frequent combinations.
+	public static double[] letterCombination(){
+		
+		String[] timeBetweenLetters = {"ea", "al", "ar", "at", "es", "er", "en", "ic", "in", "le", "ne", "on", "re", "rl", "st', "pi", "th", ""};
+		
+		return 0;
+	}
+	
 }
 
 // public double smallestSum;
