@@ -32,6 +32,7 @@ public class Profiler {
 		int averagePercentange = 0;
 		int lettersChecked = 0;
 		
+		//calculates average press time
 		for (int i = 0; i < user.letters.length; i++) {
 			if (user.letters[i].avgPressTime != 0) {
 				averagePercentange += ((Math
@@ -39,6 +40,8 @@ public class Profiler {
 				lettersChecked++;
 			}
 		}
+		
+		//how much time in average between presses
 		if (lettersChecked != 0) {
 			ArrayList <Double> timeDifference = new ArrayList <Double> ();
 			for(timeBetweenTwoChars element : user.idleTimeBetweenCharsList){
@@ -49,8 +52,11 @@ public class Profiler {
 					timeDifference.add((difference / average) * 100);
 				}	
 			}
+		
+			
 			
 		}
+		
 		return 101;
 	}
 
@@ -79,22 +85,47 @@ public class Profiler {
 	}
 	
 	//Maybe, in the future - you should add more arguments and change the formula.
-	public static double overallPercentage(double lowestValue, double HighestValue){
+	public static double overallPercentage(double lowestValue, double midValue, double highestValue){
 		
 		double ans = 0;
 		
-		ans = ((lowestValue * 40) + (HighestValue * 60)) / 100;  
+		ans = ((lowestValue * 40) + (highestValue * 60)) / 100;  
 		
 		return ans;	
 	} 
 
-	//TODO combinations like "ea" "aa" "oo".
 	//finds most frequent combinations.
-	public static double[] letterCombination(){
+	public static double letterCombination(ArrayList <timeBetweenTwoChars> niggaArray){
+	
+		ArrayList <Integer> mostFrequentLetters = new ArrayList <Integer> ();
 		
-		String[] timeBetweenLetters = {"ea", "al", "ar", "at", "es", "er", "en", "ic", "in", "le", "ne", "on", "re", "rl", "st', "pi", "th", ""};
+		String[] timeBetweenLetters = {"TH", "HE", "AN", "IN", "ER", "ON", "RE", "ED", "ND", "HA", "AT", "EN", "ES", "OF", "NT", "EA", "TI", "TO", "IO", "LE", "IS", "OU", "AR", "AS", "DE", "RT", "VE"};
 		
-		return 0;
+		for(timeBetweenTwoChars element : niggaArray){
+			if(contains(element.getFirstLetter() + "" + element.getSecondLetter(), timeBetweenLetters)){
+				mostFrequentLetters.add(element.getAvgIdleTime());
+			}
+		}
+		
+		double sum = 0;
+		int counter = 0;
+		
+		for(Integer element : mostFrequentLetters){
+			sum += element.intValue();
+			counter++;
+		}
+		return sum/counter;
+	}
+	
+	public static boolean contains(String toFind, String[] toFindFrom){
+		
+		for(int i = 0; i < toFindFrom.length; i++){
+			if(toFind.equals(toFindFrom[i].toLowerCase())){
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }
